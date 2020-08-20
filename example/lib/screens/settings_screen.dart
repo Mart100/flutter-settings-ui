@@ -24,35 +24,41 @@ class _SettingsScreenState extends State<SettingsScreen> {
             // titleTextStyle: TextStyle(fontSize: 30),
             tiles: [
               SettingsTile(
-                title: 'Language',
-                subtitle: 'English',
+                title: Text(
+                  'Language',
+                  style: TextStyle(fontSize: 20),
+                ),
+                subtitle: Text(
+                  'English',
+                  style: TextStyle(color: Colors.green),
+                ),
                 leading: Icon(Icons.language),
-                titleTextStyle: TextStyle(fontSize: 20),
-                subtitleTextStyle: TextStyle(color: Colors.green),
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => LanguagesScreen()));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (BuildContext context) => LanguagesScreen()),
+                  );
                 },
               ),
               SettingsTile(
-                  title: 'Environment',
-                  subtitle: 'Production',
-                  leading: Icon(Icons.cloud_queue)),
+                title: Text('Environment'),
+                subtitle: Text('Production'),
+                leading: Icon(Icons.cloud_queue),
+              ),
             ],
           ),
           SettingsSection(
             title: 'Account',
             tiles: [
-              SettingsTile(title: 'Phone number', leading: Icon(Icons.phone)),
-              SettingsTile(title: 'Email', leading: Icon(Icons.email)),
-              SettingsTile(title: 'Sign out', leading: Icon(Icons.exit_to_app)),
+              SettingsTile(title: Text('Phone number'), leading: Icon(Icons.phone)),
+              SettingsTile(title: Text('Email'), leading: Icon(Icons.email)),
+              SettingsTile(title: Text('Sign out'), leading: Icon(Icons.exit_to_app)),
             ],
           ),
           SettingsSection(
             title: 'Security',
             tiles: [
               SettingsTile.switchTile(
-                title: 'Lock app in background',
+                title: Text('Lock app in background'),
                 leading: Icon(Icons.phonelink_lock),
                 switchValue: lockInBackground,
                 switchActiveColor: Colors.green,
@@ -64,18 +70,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               ),
               SettingsTile.switchTile(
-                  title: 'Use fingerprint',
-                  leading: Icon(Icons.fingerprint),
-                  onToggle: (bool value) {},
-                  switchValue: false),
+                title: Text('Use fingerprint'),
+                leading: Icon(Icons.fingerprint),
+                onToggle: (bool value) {},
+                switchValue: false,
+              ),
               SettingsTile.switchTile(
-                title: 'Change password',
+                title: Text('Change password'),
                 leading: Icon(Icons.lock),
                 switchValue: true,
                 onToggle: (bool value) {},
               ),
               SettingsTile.switchTile(
-                title: 'Enable Notifications',
+                title: Text('Enable Notifications'),
                 enabled: notificationsEnabled,
                 leading: Icon(Icons.notifications_active),
                 switchValue: true,
@@ -87,10 +94,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Misc',
             tiles: [
               SettingsTile(
-                  title: 'Terms of Service', leading: Icon(Icons.description)),
+                title: Text('Terms of Service'),
+                leading: Icon(Icons.description),
+              ),
               SettingsTile(
-                  title: 'Open source licenses',
-                  leading: Icon(Icons.collections_bookmark)),
+                title: Text('Open source licenses'),
+                leading: Icon(Icons.collections_bookmark),
+              ),
             ],
           )
         ],

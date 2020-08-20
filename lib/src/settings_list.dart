@@ -32,19 +32,10 @@ class SettingsList extends StatelessWidget {
         itemCount: sections.length,
         itemBuilder: (context, index) {
           SettingsSection current = sections[index];
-          SettingsSection futureOne;
-          try {
-            futureOne = sections[index + 1];
-          } catch (e) {}
 
-          // Add divider if title is null
-          if (futureOne != null && futureOne.title != null) {
-            current.showBottomDivider = false;
-            return current;
-          } else {
-            current.showBottomDivider = true;
-            return current;
-          }
+          current.showBottomDivider = (sections.length - 1 != index);
+
+          return current;
         },
       ),
     );

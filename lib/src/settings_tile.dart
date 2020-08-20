@@ -8,16 +8,14 @@ import 'package:settings_ui/src/cupertino_settings_item.dart';
 enum _SettingsTileType { simple, switchTile }
 
 class SettingsTile extends StatelessWidget {
-  final String title;
-  final String subtitle;
+  final Text title;
+  final Text subtitle;
   final Widget leading;
   final Widget trailing;
   final VoidCallback onTap;
   final Function(bool value) onToggle;
   final bool switchValue;
   final bool enabled;
-  final TextStyle titleTextStyle;
-  final TextStyle subtitleTextStyle;
   final Color switchActiveColor;
   final _SettingsTileType _tileType;
 
@@ -28,8 +26,6 @@ class SettingsTile extends StatelessWidget {
     this.leading,
     this.trailing,
     this.onTap,
-    this.titleTextStyle,
-    this.subtitleTextStyle,
     this.enabled = true,
     this.switchActiveColor,
   })  : _tileType = _SettingsTileType.simple,
@@ -46,8 +42,6 @@ class SettingsTile extends StatelessWidget {
     this.trailing,
     @required this.onToggle,
     @required this.switchValue,
-    this.titleTextStyle,
-    this.subtitleTextStyle,
     this.switchActiveColor,
   })  : _tileType = _SettingsTileType.switchTile,
         onTap = null,
@@ -67,28 +61,28 @@ class SettingsTile extends StatelessWidget {
       return CupertinoSettingsItem(
         enabled: enabled,
         type: SettingsItemType.toggle,
-        label: title,
+        label: title.data,
         leading: leading,
         switchValue: switchValue,
         onToggle: onToggle,
-        labelTextStyle: titleTextStyle,
+        labelTextStyle: title.style,
         switchActiveColor: switchActiveColor,
-        subtitleTextStyle: subtitleTextStyle,
-        valueTextStyle: subtitleTextStyle,
+        subtitleTextStyle: subtitle.style,
+        valueTextStyle: subtitle.style,
       );
     } else {
       return CupertinoSettingsItem(
         enabled: enabled,
         type: SettingsItemType.modal,
-        label: title,
-        value: subtitle,
+        label: title.data,
+        value: subtitle.data,
         trailing: trailing,
         hasDetails: false,
         leading: leading,
         onPress: onTap,
-        labelTextStyle: titleTextStyle,
-        subtitleTextStyle: subtitleTextStyle,
-        valueTextStyle: subtitleTextStyle,
+        labelTextStyle: title.style,
+        subtitleTextStyle: subtitle.style,
+        valueTextStyle: subtitle.style,
       );
     }
   }
@@ -100,15 +94,13 @@ class SettingsTile extends StatelessWidget {
         value: switchValue,
         activeColor: switchActiveColor,
         onChanged: enabled ? onToggle : null,
-        title: Text(title, style: titleTextStyle),
-        subtitle:
-            subtitle != null ? Text(subtitle, style: subtitleTextStyle) : null,
+        title: title,
+        subtitle: subtitle,
       );
     } else {
       return ListTile(
-        title: Text(title, style: titleTextStyle),
-        subtitle:
-            subtitle != null ? Text(subtitle, style: subtitleTextStyle) : null,
+        title: title,
+        subtitle: subtitle,
         leading: leading,
         enabled: enabled,
         trailing: trailing,
