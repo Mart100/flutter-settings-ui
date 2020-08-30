@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:settings_ui/src/abstract_section.dart';
 import 'package:settings_ui/src/colors.dart';
 import 'package:settings_ui/src/settings_section.dart';
 
 class SettingsList extends StatelessWidget {
   final bool shrinkWrap;
   final ScrollPhysics physics;
-  final List<SettingsSection> sections;
+  final List<AbstractSection> sections;
   final Color backgroundColor;
   final Color lightBackgroundColor;
   final Color darkBackgroundColor;
@@ -31,7 +32,7 @@ class SettingsList extends StatelessWidget {
         shrinkWrap: shrinkWrap,
         itemCount: sections.length,
         itemBuilder: (context, index) {
-          SettingsSection current = sections[index];
+          AbstractSection current = sections[index];
 
           current.showBottomDivider = (sections.length - 1 != index);
 
